@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.screenplay'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    serenityCoreVersion = '4.1.20'
+    cucumberVersion     = '7.15.0'
+}
+
+dependencies {
+    // Serenity BDD + Screenplay + Cucumber
+    testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
+
+    // Cucumber
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+
+    // JUnit 4 (requerido por CucumberWithSerenity)
+    testImplementation 'junit:junit:4.13.2'
+
+    // Selenium WebDriver
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
+
+    // WebDriverManager
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+
+    // AssertJ para aserciones fluidas
+    testImplementation 'org.assertj:assertj-core:3.25.3'
+
+    // SLF4J
+    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.12'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+test {
+    useJUnit()
+    systemProperties(System.getProperties() as Map)
+    outputs.dir('target/site/serenity')
+}
+
+tasks.register('aggregate', JavaExec) {
+    group           = 'Serenity BDD'
+    description     = 'Agrega los resultados JSON de Serenity en un reporte HTML'
+    mainClass.set('net.thucydides.core.reports.html.HtmlAggregateStoryReporter')
+    classpath       = configurations.testRuntimeClasspath
+    args            = [
+        '--sourceDirectory', layout.buildDirectory.dir('../target/site/serenity').get().asFile.absolutePath,
+        '--outputDirectory', layout.buildDirectory.dir('../target/site/serenity').get().asFile.absolutePath,
+        '--projectName',     rootProject.name
+    ]
+    ignoreExitValue = true
+}

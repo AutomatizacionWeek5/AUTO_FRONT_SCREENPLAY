@@ -1,0 +1,280 @@
+<html lang='en'><head><link href='prism/prism.css' rel='stylesheet' /></head><body><script src='prism/prism.js'></script><body><div><pre><code class='language-html'>&lt;html lang="en" data-theme="dark"&gt;<br/>
+ &lt;head&gt;<br/>
+  &lt;meta charset="UTF-8"&gt;<br/>
+  &lt;link rel="icon" type="image/svg+xml" href="/icon.svg"&gt;<br/>
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br/>
+  &lt;title&gt;App Tickets&lt;/title&gt;<br/>
+  &lt;script type="module" crossorigin="" src="/assets/index-BoGu56ap.js"&gt;&lt;/script&gt;<br/>
+  &lt;link rel="stylesheet" crossorigin="" href="/assets/index-CcsDn9CA.css"&gt;<br/>
+  &lt;link rel="modulepreload" as="script" crossorigin="" href="/assets/TicketList-CiWSjhdq.js"&gt;<br/>
+  &lt;link rel="modulepreload" as="script" crossorigin="" href="/assets/ticketApi-Dmpet6tF.js"&gt;<br/>
+  &lt;link rel="modulepreload" as="script" crossorigin="" href="/assets/dateFormat-CIXtwz95.js"&gt;<br/>
+  &lt;link rel="modulepreload" as="script" crossorigin="" href="/assets/priorityUtils-CLgf8fss.js"&gt;<br/>
+  &lt;link rel="modulepreload" as="script" crossorigin="" href="/assets/priorityRules-Bk3hvsHx.js"&gt;<br/>
+  &lt;link rel="modulepreload" as="script" crossorigin="" href="/assets/ConfirmModal-B-Lzsb6W.js"&gt;<br/>
+  &lt;link rel="stylesheet" crossorigin="" href="/assets/ConfirmModal-NN17HaFv.css"&gt;<br/>
+  &lt;link rel="modulepreload" as="script" crossorigin="" href="/assets/useFetch-DMBb9-Lz.js"&gt;<br/>
+  &lt;link rel="stylesheet" crossorigin="" href="/assets/TicketList-BydHjoN7.css"&gt;<br/>
+ &lt;/head&gt;<br/>
+ &lt;body&gt;<br/>
+  &lt;div id="root"&gt;<br/>
+   &lt;nav class="navbar"&gt;<br/>
+    &lt;div class="navbar__brand"&gt;<br/>
+     &lt;a aria-current="page" class="navbar__logo active" href="/tickets" data-discover="true"&gt;TicketSystem&lt;/a&gt;<br/>
+    &lt;/div&gt;&lt;button class="navbar__hamburger " aria-label="Toggle menu" aria-expanded="false"&gt;&lt;span class="navbar__hamburger-line"&gt;&lt;/span&gt;&lt;span class="navbar__hamburger-line"&gt;&lt;/span&gt;&lt;span class="navbar__hamburger-line"&gt;&lt;/span&gt;&lt;/button&gt;<br/>
+    &lt;ul class="navbar__links "&gt;<br/>
+     &lt;li&gt;&lt;a aria-current="page" class="navbar__link active" href="/tickets" data-discover="true"&gt;<br/>
+       &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list" aria-hidden="true"&gt;<br/>
+        &lt;rect width="8" height="4" x="8" y="2" rx="1" ry="1"&gt;&lt;/rect&gt;&lt;path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"&gt;&lt;/path&gt;&lt;path d="M12 11h4"&gt;&lt;/path&gt;&lt;path d="M12 16h4"&gt;&lt;/path&gt;&lt;path d="M8 11h.01"&gt;&lt;/path&gt;&lt;path d="M8 16h.01"&gt;&lt;/path&gt;<br/>
+       &lt;/svg&gt;Tickets&lt;/a&gt;&lt;/li&gt;<br/>
+     &lt;li&gt;&lt;a class="navbar__link" href="/tickets/new" data-discover="true"&gt;<br/>
+       &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus" aria-hidden="true"&gt;<br/>
+        &lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;&lt;path d="M8 12h8"&gt;&lt;/path&gt;&lt;path d="M12 8v8"&gt;&lt;/path&gt;<br/>
+       &lt;/svg&gt;Crear Ticket&lt;/a&gt;&lt;/li&gt;<br/>
+     &lt;li class="navbar__actions"&gt;&lt;button class="navbar__theme-toggle" aria-label="Cambiar a modo claro" title="Modo claro"&gt;<br/>
+       &lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"&gt;<br/>
+        &lt;circle cx="12" cy="12" r="4"&gt;&lt;/circle&gt;&lt;path d="M12 2v2"&gt;&lt;/path&gt;&lt;path d="M12 20v2"&gt;&lt;/path&gt;&lt;path d="m4.93 4.93 1.41 1.41"&gt;&lt;/path&gt;&lt;path d="m17.66 17.66 1.41 1.41"&gt;&lt;/path&gt;&lt;path d="M2 12h2"&gt;&lt;/path&gt;&lt;path d="M20 12h2"&gt;&lt;/path&gt;&lt;path d="m6.34 17.66-1.41 1.41"&gt;&lt;/path&gt;&lt;path d="m19.07 4.93-1.41 1.41"&gt;&lt;/path&gt;<br/>
+       &lt;/svg&gt;&lt;/button&gt;&lt;/li&gt;<br/>
+     &lt;li class="navbar__user"&gt;&lt;span class="navbar__username"&gt;<br/>
+       &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user" aria-hidden="true"&gt;<br/>
+        &lt;path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"&gt;&lt;/path&gt;&lt;circle cx="12" cy="7" r="4"&gt;&lt;/circle&gt;<br/>
+       &lt;/svg&gt;e2eflow2026&lt;/span&gt;&lt;/li&gt;<br/>
+     &lt;li class="navbar__logout"&gt;&lt;button class="navbar__link navbar__link--logout"&gt;<br/>
+       &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out" aria-hidden="true"&gt;<br/>
+        &lt;path d="m16 17 5-5-5-5"&gt;&lt;/path&gt;&lt;path d="M21 12H9"&gt;&lt;/path&gt;&lt;path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"&gt;&lt;/path&gt;<br/>
+       &lt;/svg&gt;Cerrar Sesión&lt;/button&gt;&lt;/li&gt;<br/>
+    &lt;/ul&gt;<br/>
+   &lt;/nav&gt;<br/>
+   &lt;div class="page-container"&gt;<br/>
+    &lt;header class="list-header"&gt;<br/>
+     &lt;div&gt;<br/>
+      &lt;h1&gt;Mis Tickets&lt;/h1&gt;&lt;span class="ticket-count"&gt;11 tickets encontrados&lt;/span&gt;<br/>
+     &lt;/div&gt;<br/>
+    &lt;/header&gt;<br/>
+    &lt;div class="tickets-grid"&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#50&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de samuel&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo automatizacion&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;11 mar 2026, 10:05&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#49&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de trainning&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo automatizacion&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;11 mar 2026, 09:32&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#48&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de jacobo y luis&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo automatizacion&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;11 mar 2026, 08:08&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#46&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de macbook&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo automatizacion&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 21:46&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#40&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de sofka&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo E2E completo del usuario registrado para validar casa&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 20:33&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#39&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de alejaa&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo E2E completo del usuario registrado para validar casa&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 19:39&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#37&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de casa&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo E2E completo del usuario registrado para validar casa&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 19:06&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#35&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de HDMI&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo E2E completo del usuario registrado para validar HDMI&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 18:47&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#34&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de usuario otra vez&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo E2E completo del usuario registrado para valuiadar el nuevo ticket&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 18:04&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#33&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket de usuario registardo&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo E2E completo del usuario registrado&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 17:55&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+     &lt;div class="ticket-item ticket-item--clickable" role="link" tabindex="0"&gt;<br/>
+      &lt;div class="ticket-content"&gt;<br/>
+       &lt;div class="ticket-header"&gt;<br/>
+        &lt;span class="ticket-number"&gt;#30&lt;/span&gt;<br/>
+        &lt;h3 class="ticket-title"&gt;Ticket del Flujo E2E&lt;/h3&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;p class="ticket-description"&gt;Este ticket fue creado durante el flujo E2E completo&lt;/p&gt;<br/>
+       &lt;div class="ticket-date"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar calendar-icon" aria-hidden="true"&gt;<br/>
+         &lt;path d="M8 2v4"&gt;&lt;/path&gt;&lt;path d="M16 2v4"&gt;&lt;/path&gt;&lt;rect width="18" height="18" x="3" y="4" rx="2"&gt;&lt;/rect&gt;&lt;path d="M3 10h18"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;&lt;small class="created-at"&gt;10 mar 2026, 16:01&lt;/small&gt;<br/>
+       &lt;/div&gt;<br/>
+      &lt;/div&gt;<br/>
+      &lt;div class="ticket-footer"&gt;<br/>
+       &lt;span class="status-badge open cursor-default" title="OPEN"&gt;OPEN&lt;/span&gt;&lt;span class="priority-badge priority-unassigned" title="Prioridad"&gt;Sin prioridad&lt;/span&gt;&lt;button class="delete-button" title="Eliminar ticket"&gt;<br/>
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true"&gt;<br/>
+         &lt;path d="M10 11v6"&gt;&lt;/path&gt;&lt;path d="M14 11v6"&gt;&lt;/path&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"&gt;&lt;/path&gt;&lt;path d="M3 6h18"&gt;&lt;/path&gt;&lt;path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;<br/>
+        &lt;/svg&gt;Eliminar&lt;/button&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;<br/>
+    &lt;/div&gt;<br/>
+   &lt;/div&gt;<br/>
+   &lt;div class="toast-container" aria-live="polite"&gt;&lt;/div&gt;<br/>
+  &lt;/div&gt;<br/>
+ &lt;/body&gt;<br/>
+&lt;/html&gt;</code></pre></div></body></html>

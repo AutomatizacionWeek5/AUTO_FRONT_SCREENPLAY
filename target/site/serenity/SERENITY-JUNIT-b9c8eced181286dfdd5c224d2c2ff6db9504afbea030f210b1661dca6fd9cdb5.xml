@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="1" name="Flujo completo E2E del Sistema de Tickets (Screenplay)" skipped="0" tests="8" time="143.25" timestamp="2026-03-11 10:59:48"><testcase name="Registro exitoso de un nuevo usuario"/><testcase name="Registro con contraseñas que no coinciden"/><testcase name="Login exitoso con usuario registrado"/><testcase name="Login con credenciales incorrectas"/><testcase name="Flujo E2E completo desde registro hasta verificación de ticket"><failure message="[La URL debería ser la lista de tickets (/tickets exactamente)] &#13;&#10;Expecting actual:&#13;&#10;  &quot;http://localhost:3000/tickets/new&quot;&#13;&#10;to match pattern:&#13;&#10;  &quot;.*\/tickets\/?$&quot;" type="java.lang.AssertionError">[La URL debería ser la lista de tickets (/tickets exactamente)] &#13;
+Expecting actual:&#13;
+  "http://localhost:3000/tickets/new"&#13;
+to match pattern:&#13;
+  ".*\/tickets\/?$"</failure><system-err>[La URL debería ser la lista de tickets (/tickets exactamente)] &#13;
+Expecting actual:&#13;
+  "http://localhost:3000/tickets/new"&#13;
+to match pattern:&#13;
+  ".*\/tickets\/?$"&#13;
+org.screenplay.stepdefs.TicketListSteps.deberiaSerRedirigidoALaListaDeTickets(TicketListSteps.java:50)&#13;
+✽.debería ser redirigido a la lista de tickets(file:///C:/Users/alejandra.marin/Documents/TRAINING/ticketsActualizado/AUTO_FRONT_SCREENPLAY/src/test/resources/features/sistema_tickets_e2e.feature:66)&#13;
+</system-err></testcase><testcase name="Administrador accede a la vista de asignaciones"/><testcase name="Usuario autenticado accede al panel de notificaciones"/><testcase name="Cierre de sesión exitoso"/></testsuite>
