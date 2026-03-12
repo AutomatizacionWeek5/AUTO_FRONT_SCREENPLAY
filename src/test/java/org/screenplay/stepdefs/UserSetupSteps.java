@@ -23,4 +23,9 @@ public class UserSetupSteps {
             EnsureUserExists.withCredentials(username, email, password)
         );
     }
+
+    @Given("el usuario {string} existe en el sistema con email {string} y contraseña {string}")
+    public void elUsuarioExisteEnElSistema(String username, String email, String password) {
+        elUsuarioExistePreviamenteEnElSistema(username, email, password);
+    }
 }

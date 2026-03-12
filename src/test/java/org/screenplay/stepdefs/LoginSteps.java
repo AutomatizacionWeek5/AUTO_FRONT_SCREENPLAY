@@ -103,4 +103,31 @@ public class LoginSteps {
                 .as("El mensaje de error de autenticación debería ser visible")
                 .isTrue();
     }
+
+    // -------------------------------------------------------------------------
+    // BDD behavior-level steps
+    // -------------------------------------------------------------------------
+
+    @When("el usuario inicia sesión")
+    public void elUsuarioIniciaSesion() {
+        elUsuarioNavegaALaPaginaDeLogin();
+        elUsuarioIngresaLasCredencialesAlmacenadas();
+        haceClickEnElBotonDeLogin();
+    }
+
+    @When("el usuario intenta iniciar sesión con email {string} y contraseña {string}")
+    public void elUsuarioIntentaIniciarSesion(String email, String password) {
+        givenThat(theActorCalled("Usuario")).attemptsTo(
+            net.serenitybdd.screenplay.actions.Open.url(
+                org.screenplay.utils.config.TestConfig.LOGIN_URL)
+        );
+        elUsuarioIntroduceElEmail(email);
+        elUsuarioIntroduceLaContrasena(password);
+        elUsuarioHaceClickEn("Iniciar sesión");
+    }
+
+    @Then("el sistema rechaza el acceso con un mensaje de error")
+    public void elSistemaRechazaElAcceso() {
+        deberiaVerUnMensajeDeErrorDeAutenticacion();
+    }
 }

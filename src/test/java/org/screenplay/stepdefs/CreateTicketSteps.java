@@ -3,6 +3,7 @@ package org.screenplay.stepdefs;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.screenplay.context.ScenarioContext;
+import org.screenplay.tasks.navigation.NavigateTo;
 import org.screenplay.tasks.tickets.FillTicketForm;
 import org.screenplay.tasks.tickets.SubmitTicketForm;
 
@@ -29,5 +30,18 @@ public class CreateTicketSteps {
         when(theActorInTheSpotlight()).attemptsTo(
             SubmitTicketForm.now()
         );
+    }
+
+    // -------------------------------------------------------------------------
+    // BDD behavior-level step
+    // -------------------------------------------------------------------------
+
+    @When("crea un ticket con título {string} y descripción {string}")
+    public void creaUnTicket(String title, String description) {
+        when(theActorInTheSpotlight()).attemptsTo(
+            NavigateTo.theSection("Crear Ticket")
+        );
+        completaElFormularioDeTicket(title, description);
+        enviaElFormularioDelTicket();
     }
 }
