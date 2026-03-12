@@ -7,9 +7,7 @@ import net.serenitybdd.annotations.Step;
 import org.screenplay.interactions.DemoDelay;
 import org.screenplay.utils.config.TestConfig;
 
-/**
- * Tarea: abrir la aplicación del Sistema de Tickets en el navegador.
- */
+
 public class OpenApplication implements Task {
 
     public OpenApplication() {

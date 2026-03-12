@@ -17,9 +17,6 @@ import org.screenplay.utils.config.TestConfig;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
-/**
- * Step Definitions para navegación general en la aplicación.
- */
 public class NavigationSteps {
 
     @Given("el usuario navega a la aplicación")
@@ -82,10 +79,7 @@ public class NavigationSteps {
                 .isTrue();
     }
 
-    // -------------------------------------------------------------------------
-    // BDD behavior-level steps
-    // -------------------------------------------------------------------------
-
+  
     @Given("el administrador está autenticado en el sistema")
     public void elAdministradorEstaAutenticadoEnElSistema() {
         givenThat(theActorCalled("Usuario")).attemptsTo(

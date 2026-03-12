@@ -8,10 +8,6 @@ import org.screenplay.interactions.DemoDelay;
 import org.screenplay.interactions.WaitForUrlContaining;
 import org.screenplay.ui.NavBarUi;
 
-/**
- * Tarea: cerrar la sesión del usuario actual.
- * Responsabilidad única: hacer clic en el botón de logout y esperar la redirección.
- */
 public class Logout implements Task {
 
     public Logout() {

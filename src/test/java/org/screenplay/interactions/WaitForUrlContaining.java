@@ -10,9 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * Interacción que espera hasta que la URL del navegador contenga un fragmento dado.
- */
 public class WaitForUrlContaining implements Interaction {
 
     private final String urlFragment;

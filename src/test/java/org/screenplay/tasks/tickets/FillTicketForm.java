@@ -7,10 +7,7 @@ import net.serenitybdd.annotations.Step;
 import org.screenplay.interactions.DemoDelay;
 import org.screenplay.ui.CreateTicketUi;
 
-/**
- * Tarea: completar el formulario de creación de ticket con título y descripción.
- * Responsabilidad única: rellenar los campos del formulario.
- */
+
 public class FillTicketForm implements Task {
 
     private final String title;

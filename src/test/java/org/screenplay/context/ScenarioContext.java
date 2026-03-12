@@ -1,9 +1,5 @@
 package org.screenplay.context;
 
-/**
- * Contexto del escenario con alcance por hilo (ThreadLocal).
- * Almacena datos compartidos entre Step Definitions durante un escenario.
- */
 public class ScenarioContext {
 
     private static final ThreadLocal<ScenarioContext> INSTANCE =

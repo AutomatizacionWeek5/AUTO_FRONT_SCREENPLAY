@@ -1,8 +1,6 @@
 package org.screenplay.utils.config;
 
-/**
- * Configuración centralizada del proyecto de pruebas.
- */
+
 public final class TestConfig {
 
     public static final String BASE_URL =

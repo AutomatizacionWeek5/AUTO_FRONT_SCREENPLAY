@@ -15,10 +15,6 @@ import org.screenplay.utils.config.TestConfig;
 
 import java.time.Duration;
 
-/**
- * Tarea: registrar un nuevo usuario en la aplicación.
- * Responsabilidad única: completar el formulario de registro y enviarlo.
- */
 public class Register implements Task {
 
     private final String username;

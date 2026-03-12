@@ -10,9 +10,6 @@ import org.screenplay.tasks.tickets.SubmitTicketForm;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
-/**
- * Step Definitions para la creación de tickets.
- */
 public class CreateTicketSteps {
 
     @When("completa el formulario de ticket con título {string} y descripción {string}")
@@ -31,10 +28,6 @@ public class CreateTicketSteps {
             SubmitTicketForm.now()
         );
     }
-
-    // -------------------------------------------------------------------------
-    // BDD behavior-level step
-    // -------------------------------------------------------------------------
 
     @When("crea un ticket con título {string} y descripción {string}")
     public void creaUnTicket(String title, String description) {

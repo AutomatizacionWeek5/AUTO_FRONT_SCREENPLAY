@@ -17,9 +17,7 @@ import org.screenplay.ui.RegisterPageUi;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
-/**
- * Step Definitions para escenarios de registro de usuario.
- */
+
 public class RegisterSteps {
 
     @When("el usuario navega a la página de registro")
@@ -90,9 +88,6 @@ public class RegisterSteps {
                 .isTrue();
     }
 
-    // -------------------------------------------------------------------------
-    // BDD behavior-level steps
-    // -------------------------------------------------------------------------
 
     @When("el usuario se registra con usuario {string}, email {string} y contraseña {string}")
     public void elUsuarioSeRegistra(String username, String email, String password) {

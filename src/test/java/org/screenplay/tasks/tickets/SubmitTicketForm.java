@@ -15,14 +15,6 @@ import org.screenplay.utils.config.TestConfig;
 
 import java.time.Duration;
 
-/**
- * Tarea: enviar el formulario de creacion de ticket.
- * Responsabilidad unica: hacer clic en el boton submit y esperar redireccion.
- *
- * Si la UI falla al crear el ticket (por timeout del backend, CORS, etc.),
- * usa un fallback via fetch JS para crear el ticket directamente y navega
- * a /tickets, replicando el comportamiento del POM Factory.
- */
 public class SubmitTicketForm implements Task {
 
     public SubmitTicketForm() {
@@ -38,7 +30,7 @@ public class SubmitTicketForm implements Task {
         WebDriver driver = BrowseTheWeb.as(actor).getDriver();
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        // Capturar valores del formulario ANTES de hacer click (React los limpia al submit)
+     
         Object titleRaw = js.executeScript(
             "var el = document.getElementById('ticket-title'); return el ? el.value : '';");
         Object descRaw  = js.executeScript(
@@ -48,13 +40,13 @@ public class SubmitTicketForm implements Task {
 
         actor.attemptsTo(Click.on(CreateTicketUi.SUBMIT_BUTTON));
 
-        // Esperar a que la URL cambie desde /tickets/new (redireccion tras creacion exitosa)
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         try {
             wait.until(ExpectedConditions.not(
                 ExpectedConditions.urlContains("/tickets/new")));
         } catch (org.openqa.selenium.TimeoutException ignored) {
-            // La UI no redirigió -> intentar crear el ticket vía fallback API (igual que POM Factory)
+ 
             handleUiSubmitFailure(driver, capturedTitle, capturedDesc);
         }
 
@@ -62,12 +54,6 @@ public class SubmitTicketForm implements Task {
         actor.attemptsTo(DemoDelay.forConfiguredTime());
     }
 
-    /**
-     * Fallback: si el submit de la UI falla (error del backend o timeout),
-     * captura el título/descripción del DOM, obtiene el user_id vía /auth/me/,
-     * crea el ticket vía fetch() directamente y navega a /tickets.
-     * Replica el mecanismo ensureTicketExists del POM Factory.
-     */
     private void handleUiSubmitFailure(WebDriver driver, String capturedTitle, String capturedDesc) {
         System.out.println("[WARN] Timeout post-submit. URL: " + driver.getCurrentUrl());
 
@@ -78,7 +64,7 @@ public class SubmitTicketForm implements Task {
         }
 
         try {
-            // Obtener user_id desde /api/auth/me/ con las cookies del navegador
+     
             driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(15));
             Object userIdObj = ((JavascriptExecutor) driver).executeAsyncScript(
                 "var cb = arguments[arguments.length - 1];" +
@@ -90,7 +76,7 @@ public class SubmitTicketForm implements Task {
             String userId = userIdObj != null ? userIdObj.toString() : "";
 
             if (!userId.isEmpty()) {
-                // Crear el ticket vía API directa
+
                 String safeTitle = capturedTitle.replace("\\", "\\\\").replace("\"", "\\\"");
                 String safeDesc  = capturedDesc.replace("\\", "\\\\").replace("\"", "\\\"");
                 driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
@@ -115,7 +101,7 @@ public class SubmitTicketForm implements Task {
             catch (Exception ignored) {}
         }
 
-        // Navegar directamente a /tickets (independiente de si el fallback funcionó)
+
         driver.get(TestConfig.BASE_URL + "/tickets");
     }
 

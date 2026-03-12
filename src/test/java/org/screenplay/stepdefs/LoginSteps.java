@@ -22,10 +22,6 @@ import java.time.Duration;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
-/**
- * Step Definitions para escenarios de autenticación (login).
- * Delega toda la lógica al actor y sus Tasks/Interactions.
- */
 public class LoginSteps {
 
     @Given("el usuario está autenticado con email {string} y contraseña {string}")
@@ -103,10 +99,6 @@ public class LoginSteps {
                 .as("El mensaje de error de autenticación debería ser visible")
                 .isTrue();
     }
-
-    // -------------------------------------------------------------------------
-    // BDD behavior-level steps
-    // -------------------------------------------------------------------------
 
     @When("el usuario inicia sesión")
     public void elUsuarioIniciaSesion() {

@@ -17,12 +17,7 @@ import org.screenplay.utils.config.TestConfig;
 
 import java.time.Duration;
 
-/**
- * Tarea: iniciar sesión en la aplicación.
- * Responsabilidad única: autenticar al actor con email y contraseña.
- *
- * Incluye fallback via fetch API en caso de que la UI falle silenciosamente.
- */
+
 public class Login implements Task {
 
     private final String email;
@@ -60,7 +55,7 @@ public class Login implements Task {
             System.out.println("[WARN] Timeout esperando resultado del login en UI.");
         }
 
-        // Fallback: si sigue en /login, intentar via API fetch
+       
         if (driver.getCurrentUrl().contains("/login")) {
             String safeEmail    = email.replace("'", "\\'");
             String safePassword = password.replace("'", "\\'");

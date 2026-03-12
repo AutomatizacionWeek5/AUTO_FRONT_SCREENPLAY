@@ -11,11 +11,6 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpTimeoutException;
 import java.time.Duration;
 
-/**
- * Tarea de precondición: asegura que un usuario exista en el sistema antes del escenario.
- * Utiliza llamadas HTTP directas desde Java (no a través del navegador).
- * Responsabilidad única: garantizar la existencia del usuario de prueba.
- */
 public class EnsureUserExists implements Task {
 
     private final String username;

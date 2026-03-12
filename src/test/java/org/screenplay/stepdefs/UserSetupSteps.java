@@ -7,10 +7,7 @@ import org.screenplay.tasks.setup.EnsureUserExists;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
-/**
- * Step Definitions para preparación de usuarios de prueba.
- * Garantiza la existencia del usuario en el sistema antes del escenario.
- */
+
 public class UserSetupSteps {
 
     @Given("el usuario {string} con email {string} y contraseña {string} existe previamente en el sistema")

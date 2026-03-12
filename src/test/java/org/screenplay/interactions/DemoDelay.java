@@ -5,10 +5,6 @@ import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.annotations.Step;
 import org.screenplay.utils.config.TestConfig;
 
-/**
- * Interacción que introduce una pausa configurable (demo.delay) para hacer
- * visible la ejecución en el navegador durante las demostraciones.
- */
 public class DemoDelay implements Interaction {
 
     public DemoDelay() {

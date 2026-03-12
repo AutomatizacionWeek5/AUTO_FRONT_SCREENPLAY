@@ -9,20 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-/**
- * Helper para operaciones de API ejecutadas desde el navegador (vía JS fetch).
- * Se usa como fallback cuando la UI falla silenciosamente.
- */
 public final class ApiHelper {
 
     private ApiHelper() {
     }
 
-    /**
-     * Realiza login vía fetch API desde el contexto del navegador.
-     *
-     * @return "login:200" si exitoso, "login_err:..." o null si falla
-     */
     public static Object apiLogin(WebDriver driver, String safeEmail, String safePassword) {
         try {
             driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(15));
@@ -41,11 +32,7 @@ public final class ApiHelper {
         }
     }
 
-    /**
-     * Espera hasta que la página de tickets haya cargado su contenido.
-     *
-     * @return true si cargó sin volver al login
-     */
+    
     public static boolean waitForTicketsContent(WebDriver driver, int timeoutSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
         try {
@@ -56,7 +43,7 @@ public final class ApiHelper {
                 return !content.isEmpty();
             });
         } catch (org.openqa.selenium.TimeoutException ignored) {
-            // intento completado por timeout
+            
         }
         return !driver.getCurrentUrl().contains("/login");
     }

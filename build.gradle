@@ -15,29 +15,23 @@ ext {
 }
 
 dependencies {
-    // Serenity BDD + Screenplay + Cucumber
+
     testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
     testImplementation "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}"
     testImplementation "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}"
     testImplementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
 
-    // Cucumber
     testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
     testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
 
-    // JUnit 4 (requerido por CucumberWithSerenity)
     testImplementation 'junit:junit:4.13.2'
 
-    // Selenium WebDriver
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
 
-    // WebDriverManager
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
 
-    // AssertJ para aserciones fluidas
     testImplementation 'org.assertj:assertj-core:3.25.3'
 
-    // SLF4J
     testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.12'
 }
 

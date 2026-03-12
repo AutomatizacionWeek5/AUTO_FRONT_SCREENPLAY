@@ -15,10 +15,6 @@ import org.screenplay.interactions.WaitForUrlContaining;
 import java.time.Duration;
 import java.util.List;
 
-/**
- * Tarea: abrir el detalle de un ticket haciendo clic en él desde la lista.
- * Responsabilidad única: encontrar el ticket por título y hacer clic.
- */
 public class OpenTicketDetail implements Task {
 
     private final String ticketTitle;
@@ -53,7 +49,7 @@ public class OpenTicketDetail implements Task {
         if (!ticketElements.isEmpty()) {
             ticketElements.get(0).click();
         } else {
-            // Intentar clic en el primer ticket disponible
+           
             List<WebElement> allTickets = driver.findElements(By.cssSelector(".ticket-item"));
             if (!allTickets.isEmpty()) {
                 allTickets.get(0).click();

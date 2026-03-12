@@ -17,14 +17,12 @@ import org.screenplay.interactions.WaitForUrlContaining;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
-/**
- * Step Definitions para la lista de tickets y el detalle.
- */
+
 public class TicketListSteps {
 
     @Then("debería ser redirigido a la lista de tickets")
     public void deberiaSerRedirigidoALaListaDeTickets() {
-        // Esperar a que la URL sea exactamente /tickets (no /tickets/new ni /tickets/{id})
+        
         org.openqa.selenium.WebDriver driver = BrowseTheWeb.as(theActorInTheSpotlight()).getDriver();
         try {
             new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(25))
@@ -35,8 +33,7 @@ public class TicketListSteps {
         } catch (org.openqa.selenium.TimeoutException e) {
             System.out.println("[WARN] Timeout esperando URL exacta /tickets");
         }
-        // Esperar a que el contexto de autenticación React esté completamente cargado
-        // (el NavBar muestra el username solo cuando el context tiene el user)
+        
         try {
             new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10))
                 .until(org.openqa.selenium.support.ui.ExpectedConditions
@@ -54,7 +51,7 @@ public class TicketListSteps {
     public void elTicketDeberiaAparecerEnLaLista(String ticketTitle) {
         Boolean inList = IsTicketInList.withTitle(ticketTitle).answeredBy(theActorInTheSpotlight());
         if (!inList) {
-            // El ticket podría estar cargando aún; recargamos la página como hace el POM Factory
+           
             System.out.println("[WARN] Ticket '" + ticketTitle + "' no encontrado en primera pasada. Recargando...");
             BrowseTheWeb.as(theActorInTheSpotlight()).getDriver().navigate().refresh();
             inList = IsTicketInList.withTitle(ticketTitle).answeredBy(theActorInTheSpotlight());
@@ -90,9 +87,6 @@ public class TicketListSteps {
                 .contains(expectedTitle);
     }
 
-    // -------------------------------------------------------------------------
-    // BDD behavior-level steps
-    // -------------------------------------------------------------------------
 
     @Then("el ticket {string} aparece en su lista de solicitudes")
     public void elTicketApareceEnSuListaDeSolicitudes(String ticketTitle) {

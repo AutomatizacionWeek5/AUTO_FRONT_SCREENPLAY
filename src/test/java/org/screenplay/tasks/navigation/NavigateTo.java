@@ -8,10 +8,7 @@ import org.screenplay.interactions.DemoDelay;
 import org.screenplay.interactions.WaitForUrlContaining;
 import org.screenplay.ui.NavBarUi;
 
-/**
- * Tarea: navegar a una sección de la aplicación usando la barra de navegación.
- * Responsabilidad única: hacer clic en el enlace de navbar correspondiente.
- */
+
 public class NavigateTo implements Task {
 
     private final String destination;
