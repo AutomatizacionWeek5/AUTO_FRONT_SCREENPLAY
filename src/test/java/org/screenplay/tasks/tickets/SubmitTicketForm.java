@@ -5,10 +5,8 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.annotations.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.screenplay.interactions.DemoDelay;
@@ -16,7 +14,6 @@ import org.screenplay.ui.CreateTicketUi;
 import org.screenplay.utils.config.TestConfig;
 
 import java.time.Duration;
-import java.util.List;
 
 /**
  * Tarea: enviar el formulario de creacion de ticket.
@@ -62,6 +59,7 @@ public class SubmitTicketForm implements Task {
         }
 
         actor.attemptsTo(DemoDelay.forConfiguredTime());
+        actor.attemptsTo(DemoDelay.forConfiguredTime());
     }
 
     /**
@@ -71,10 +69,7 @@ public class SubmitTicketForm implements Task {
      * Replica el mecanismo ensureTicketExists del POM Factory.
      */
     private void handleUiSubmitFailure(WebDriver driver, String capturedTitle, String capturedDesc) {
-        List<WebElement> errors = driver.findElements(By.cssSelector(".error-alert"));
-        String errorMsg = errors.isEmpty() ? "(sin error visible)" : errors.get(0).getText();
-        System.out.println("[WARN] Timeout post-submit. URL: " + driver.getCurrentUrl() +
-                           " | Error UI: " + errorMsg);
+        System.out.println("[WARN] Timeout post-submit. URL: " + driver.getCurrentUrl());
 
         if (capturedTitle.isEmpty()) {
             System.out.println("[WARN] Título vacío - no se puede hacer fallback. Navegando a /tickets.");

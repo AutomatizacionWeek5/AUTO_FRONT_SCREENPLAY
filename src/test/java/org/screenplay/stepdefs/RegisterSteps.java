@@ -119,21 +119,15 @@ public class RegisterSteps {
     @When("el usuario intenta registrarse con usuario {string}, email {string}, contraseña {string} y confirmación {string}")
     public void elUsuarioIntentaRegistrarse(String username, String email, String password, String confirmPassword) {
         givenThat(theActorCalled("Usuario")).attemptsTo(
-            net.serenitybdd.screenplay.actions.Open.url(
-                org.screenplay.utils.config.TestConfig.REGISTER_URL)
+            Register.withData(username, email, password, confirmPassword)
         );
-        introduceElNombreDeUsuario(username);
-        introduceElEmail(email);
-        introduceLaContrasena(password);
-        introduceLaConfirmacionDeContrasena(confirmPassword);
-        haceClickEn("Crear cuenta");
     }
 
-    @Then("el sistema rechaza el registro informando que las contraseñas no coinciden")
-    public void elSistemaRechazaElRegistro() {
+    @Then("el sistema rechaza el registro informando que el usuario ya existe")
+    public void elSistemaRechazaElRegistroUsuarioExistente() {
         Boolean errorVisible = IsAuthErrorVisible.onCurrentPage().answeredBy(theActorInTheSpotlight());
         Assertions.assertThat(errorVisible)
-                .as("El sistema debería mostrar un error cuando las contraseñas no coinciden")
+                .as("El sistema debería mostrar un error cuando el usuario ya existe")
                 .isTrue();
         when(theActorInTheSpotlight()).attemptsTo(DemoDelay.forConfiguredTime());
     }
