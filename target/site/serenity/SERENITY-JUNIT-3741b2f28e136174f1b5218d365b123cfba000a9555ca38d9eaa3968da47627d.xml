@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="1" failures="0" name="Flujo completo E2E del Sistema de Tickets (Screenplay)" skipped="0" tests="1" time="0.0" timestamp="2026-03-11 09:18:26"><testcase name="Flujo E2E completo desde registro hasta verificación de ticket"><error message="Cannot invoke &quot;Object.getClass()&quot; because &quot;object&quot; is null" type="java.lang.NullPointerException">Cannot invoke "Object.getClass()" because "object" is null</error><system-err>Cannot invoke "Object.getClass()" because "object" is null&#13;
-org.screenplay.stepdefs.NavigationSteps.elUsuarioNavegaALaAplicacion(NavigationSteps.java:25)&#13;
-✽.el usuario navega a la aplicación(file:///C:/Users/alejandra.marin/Documents/TRAINING/ticketsActualizado/AUTO_FRONT_SCREENPLAY/src/test/resources/features/sistema_tickets_e2e.feature:9)&#13;
-</system-err></testcase></testsuite>

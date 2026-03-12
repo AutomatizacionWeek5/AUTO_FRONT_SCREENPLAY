@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Validaciones de autenticación del Sistema de Tickets" skipped="0" tests="2" time="11.29" timestamp="2026-03-11 09:36:34"><testcase name="Registro rechazado cuando las contraseñas no coinciden"/><testcase name="Login rechazado con credenciales incorrectas"/></testsuite>
