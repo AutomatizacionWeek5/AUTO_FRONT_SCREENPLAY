@@ -59,7 +59,10 @@ src/
     │   └── ui/              # Locators (NavBarUi, LoginPageUi, CreateTicketUi...)
     └── resources/
         ├── features/
-        │   └── sistema_tickets_e2e.feature   # 8 escenarios E2E
+        │   ├── registro.feature          # HU-1: Registro (Scenario Outline)
+        │   ├── validaciones.feature      # Edge cases: registro y login inválidos (Scenario Outline)
+        │   ├── flujo_e2e.feature         # HU-5: Flujo completo E2E (Scenario Outline)
+        │   └── gestion.feature           # HU-6/7: Asignaciones, notificaciones y logout
         └── serenity.conf                     # Configuración de Serenity
 ```
 
@@ -67,83 +70,117 @@ src/
 
 ## Escenarios de prueba
 
-| # | Tag(s)                      | Escenario                                             |
-|---|-----------------------------|-------------------------------------------------------|
-| 1 | `@registro @happy-path`     | Registro exitoso de un nuevo usuario                  |
-| 2 | `@registro @validacion`     | Registro con contraseñas que no coinciden             |
-| 3 | `@login @happy-path`        | Login exitoso con usuario registrado                  |
-| 4 | `@login @validacion`        | Login con credenciales incorrectas                    |
-| 5 | `@flujo-e2e @smoke`         | Flujo E2E completo (login → crear ticket → verificar) |
-| 6 | `@asignaciones @admin`      | Administrador accede a la vista de asignaciones       |
-| 7 | `@notificaciones`           | Usuario autenticado accede al panel de notificaciones |
-| 8 | `@logout`                   | Cierre de sesión exitoso                              |
+| Feature | Tag(s) | Tipo | Iteraciones |
+|---------|--------|------|-------------|
+| `registro.feature` | `@registro @happy-path` | Scenario Outline | 2 (anyi398, maria398) |
+| `validaciones.feature` | `@registro @edge-case` | Scenario Outline | 2 (passwords no coinciden) |
+| `validaciones.feature` | `@login @edge-case` | Scenario Outline | 2 (credenciales inválidas) |
+| `flujo_e2e.feature` | `@flujo-e2e @smoke` | Scenario Outline | 2 (e2eflow2026, e2eflow2027) |
+| `gestion.feature` | `@asignaciones @admin` | Scenario | 1 |
+| `gestion.feature` | `@notificaciones` | Scenario | 1 |
+| `gestion.feature` | `@logout` | Scenario | 1 |
 
 ---
 
 ## Comandos de ejecución
 
 > Todos los comandos se ejecutan desde la raíz del proyecto `AUTO_FRONT_SCREENPLAY/`
+> **Nota PowerShell:** el carácter `@` es especial. El argumento `-D` siempre entre comillas dobles: `"-Dpropiedad=valor"`.
 
-### Suite completa
+---
+
+### 1. Solo registro (happy path)
+
+Ejecuta el `Scenario Outline` de `registro.feature` — crea usuarios nuevos vía UI (2 iteraciones).
+
+```powershell
+.\gradlew test "-Dcucumber.filter.tags=@registro and @happy-path" --no-daemon
+```
+
+---
+
+### 2. Solo validaciones (edge cases)
+
+Ejecuta los dos `Scenario Outline` de `validaciones.feature`: contraseñas no coinciden + credenciales incorrectas (2 iteraciones cada uno).
+
+```powershell
+# Todas las validaciones juntas
+.\gradlew test "-Dcucumber.filter.tags=@edge-case" --no-daemon
+
+# Solo validaciones de registro
+.\gradlew test "-Dcucumber.filter.tags=@registro and @edge-case" --no-daemon
+
+# Solo validaciones de login
+.\gradlew test "-Dcucumber.filter.tags=@login and @edge-case" --no-daemon
+```
+
+---
+
+### 3. Solo flujo E2E
+
+Ejecuta el `Scenario Outline` de `flujo_e2e.feature`: login → crear ticket → verificar detalle (2 iteraciones).
+
+```powershell
+.\gradlew test "-Dcucumber.filter.tags=@flujo-e2e" --no-daemon
+
+# Alias smoke (mismo escenario)
+.\gradlew test "-Dcucumber.filter.tags=@smoke" --no-daemon
+```
+
+---
+
+### 4. Solo gestión (asignaciones + notificaciones + logout juntos)
+
+Ejecuta los tres escenarios de `gestion.feature` en una sola pasada.
+
+```powershell
+.\gradlew test "-Dcucumber.filter.tags=@gestion" --no-daemon
+```
+
+Si necesitas ejecutar cada uno por separado:
+
+```powershell
+# Solo asignaciones
+.\gradlew test "-Dcucumber.filter.tags=@asignaciones" --no-daemon
+
+# Solo notificaciones
+.\gradlew test "-Dcucumber.filter.tags=@notificaciones" --no-daemon
+
+# Solo logout
+.\gradlew test "-Dcucumber.filter.tags=@logout" --no-daemon
+```
+
+---
+
+### 5. Todo excepto edge cases
+
+Ejecuta registro, flujo E2E y gestión — omite los `Scenario Outline` de validaciones.
+
+```powershell
+.\gradlew test "-Dcucumber.filter.tags=not @edge-case" --no-daemon
+```
+
+---
+
+### 6. Suite completa
 
 ```powershell
 .\gradlew test --no-daemon
 ```
 
-### Por escenario individual
+---
 
-#### 1 — Registro exitoso de un nuevo usuario
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@registro and @happy-path" --no-daemon
-```
-> ⚠️ Este escenario falla en la segunda ejecución si el usuario `maria398` ya existe en la BD (condición de datos conocida, igual que en POM Factory).
-
-#### 2 — Registro con contraseñas que no coinciden
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@registro and @validacion" --no-daemon
-```
-
-#### 3 — Login exitoso con usuario registrado
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@login and @happy-path" --no-daemon
-```
-
-#### 4 — Login con credenciales incorrectas
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@login and @validacion" --no-daemon
-```
-
-#### 5 — Flujo E2E completo (smoke)
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@smoke" --no-daemon
-```
-
-#### 6 — Administrador accede a asignaciones
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@asignaciones" --no-daemon
-```
-
-#### 7 — Panel de notificaciones
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@notificaciones" --no-daemon
-```
-
-#### 8 — Cierre de sesión
-```powershell
-.\gradlew test "-Dcucumber.filter.tags=@logout" --no-daemon
-```
-
-### Grupos de escenarios
+### Opciones adicionales
 
 ```powershell
-# Solo escenarios de registro
-.\gradlew test "-Dcucumber.filter.tags=@registro" --no-daemon
+# Sin retraso entre pasos (ejecución más rápida)
+.\gradlew test "-Ddemo.delay=0" --no-daemon
 
-# Solo escenarios de login
-.\gradlew test "-Dcucumber.filter.tags=@login" --no-daemon
+# Cambiar URL base de la aplicación
+.\gradlew test "-Dwebdriver.base.url=http://mi-servidor:3000" --no-daemon
 
-# Escenarios del flujo completo E2E (feature completa)
-.\gradlew test "-Dcucumber.filter.tags=@flujo-completo" --no-daemon
+# Combinar opciones: flujo E2E sin delay
+.\gradlew test "-Dcucumber.filter.tags=@smoke" "-Ddemo.delay=0" --no-daemon
 ```
 
 ---
@@ -188,11 +225,13 @@ El valor por defecto es `1` segundo. Para ejecución más rápida sin pausa:
 
 ## Notas de datos de prueba
 
-| Usuario           | Email                          | Contraseña            | Rol   |
-|-------------------|--------------------------------|-----------------------|-------|
-| `admin`           | `admin@sofkau.com`             | `Admin@SofkaU_2026!`  | ADMIN |
-| `e2eflow2026`     | `e2eflow2026@test.sofka.com`   | `TestPass@2026`       | USER  |
-| `maria398`        | `userMaria@test.sofka.com`     | `Maria2Tess@2027`     | USER  |
+| Usuario | Email | Contraseña | Rol | Creado por |
+|---------|-------|------------|-----|------------|
+| `admin` | `admin@sofkau.com` | `Admin@SofkaU_2026!` | ADMIN | Sistema |
+| `e2eflow2026` | `e2eflow2026@test.sofka.com` | `TestPass@2026` | USER | API automática |
+| `e2eflow2027` | `e2eflow2027@test.sofka.com` | `TestPass@2026` | USER | API automática |
+| `anyi398` | `userAnyi@test.sofka.com` | `anyi2Tess@2027` | USER | UI (registro) |
+| `maria398` | `userMaria@test.sofka.com` | `Maria2Tess@2027` | USER | UI (registro) |
 
-> El usuario `e2eflow2026` se crea automáticamente via API si no existe (`EnsureUserExists`).
-> El usuario `maria398` se crea via UI — el escenario `@registro @happy-path` fallará si ya existe en la BD.
+> `e2eflow2026` y `e2eflow2027` se crean automáticamente vía API si no existen (`EnsureUserExists`).
+> `anyi398` y `maria398` se crean vía UI — el `@registro @happy-path` fallará si ya existen en BD.

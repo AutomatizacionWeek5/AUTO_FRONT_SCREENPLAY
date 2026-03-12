@@ -11,9 +11,6 @@ import org.screenplay.questions.IsAuthErrorVisible;
 import org.screenplay.tasks.auth.Register;
 import org.screenplay.ui.RegisterPageUi;
 
-import java.util.List;
-import java.util.Map;
-
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 
@@ -30,13 +27,8 @@ public class RegisterSteps {
         );
     }
 
-    @When("completa el formulario de registro con:")
-    public void completaElFormularioDeRegistro(List<Map<String, String>> dataTable) {
-        Map<String, String> data = dataTable.get(0);
-        String username = data.get("username");
-        String email    = data.get("email");
-        String password = data.get("password");
-
+    @When("completa el formulario de registro con username {string}, email {string} y contraseña {string}")
+    public void completaElFormularioDeRegistro(String username, String email, String password) {
         ScenarioContext.get().setUsername(username);
         ScenarioContext.get().setEmail(email);
         ScenarioContext.get().setPassword(password);

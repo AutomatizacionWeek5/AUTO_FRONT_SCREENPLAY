@@ -1,6 +1,5 @@
 package org.screenplay.stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,8 +18,6 @@ import org.screenplay.tasks.auth.Login;
 import org.screenplay.ui.LoginPageUi;
 
 import java.time.Duration;
-import java.util.List;
-import java.util.Map;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
@@ -30,12 +27,6 @@ import static net.serenitybdd.screenplay.actors.OnStage.*;
  * Delega toda la lógica al actor y sus Tasks/Interactions.
  */
 public class LoginSteps {
-
-    @Given("un usuario con email {string} y contraseña {string} existe en el sistema")
-    public void unUsuarioExisteEnElSistema(String email, String password) {
-        ScenarioContext.get().setEmail(email);
-        ScenarioContext.get().setPassword(password);
-    }
 
     @Given("el usuario está autenticado con email {string} y contraseña {string}")
     public void elUsuarioEstaAutenticado(String email, String password) {
@@ -103,16 +94,6 @@ public class LoginSteps {
             System.out.println("[WARN] Timeout esperando resultado del click en botón de login.");
         }
         when(theActorInTheSpotlight()).attemptsTo(DemoDelay.forConfiguredTime());
-    }
-
-    @When("completa el formulario de login con:")
-    public void completaElFormularioDeLoginCon(List<Map<String, String>> dataTable) {
-        Map<String, String> data = dataTable.get(0);
-        String email    = data.get("email");
-        String password = data.get("password");
-        when(theActorInTheSpotlight()).attemptsTo(
-            Login.withCredentials(email, password)
-        );
     }
 
     @Then("debería ver un mensaje de error de autenticación")
