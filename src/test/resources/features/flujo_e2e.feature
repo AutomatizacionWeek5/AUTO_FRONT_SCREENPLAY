@@ -6,7 +6,7 @@ Feature: Flujo E2E completo del Sistema de Tickets
   para gestionar mis solicitudes de soporte de extremo a extremo.
 
   @smoke
-  Scenario Outline: Flujo E2E completo: login, creación y consulta de ticket
+  Scenario Outline: Usuario crea y consulta un ticket
     Given el usuario "<username>" existe en el sistema con email "<email>" y contraseña "<password>"
     When el usuario inicia sesión
     And crea un ticket con título "<titulo>" y descripción "<descripcion>"
