@@ -5,9 +5,6 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.openqa.selenium.By;
 
-/**
- * Pregunta: ¿está visible la barra de navegación?
- */
 public class IsNavBarVisible implements Question<Boolean> {
 
     private IsNavBarVisible() {

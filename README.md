@@ -152,6 +152,20 @@ Si necesitas ejecutar cada uno por separado:
 
 ---
 
+
+## Generar reporte HTML de Serenity
+
+```powershell
+.\gradlew aggregate --no-daemon
+```
+
+El reporte se genera en:
+```
+target/site/serenity/index.html
+```
+
+---
+
 ### 5. Todo excepto edge cases
 
 Ejecuta registro, flujo E2E y gestión — omite los `Scenario Outline` de validaciones.
@@ -185,18 +199,7 @@ Ejecuta registro, flujo E2E y gestión — omite los `Scenario Outline` de valid
 
 ---
 
-## Generar reporte HTML de Serenity
 
-```powershell
-.\gradlew aggregate --no-daemon
-```
-
-El reporte se genera en:
-```
-target/site/serenity/index.html
-```
-
----
 
 ## Configuración
 

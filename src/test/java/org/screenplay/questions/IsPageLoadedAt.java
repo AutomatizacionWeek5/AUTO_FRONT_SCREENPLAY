@@ -5,10 +5,6 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.openqa.selenium.By;
 
-/**
- * Pregunta: ¿está cargada la página en la URL dada?
- * Verifica que la URL actual contenga el fragmento indicado.
- */
 public class IsPageLoadedAt implements Question<Boolean> {
 
     private final String urlFragment;

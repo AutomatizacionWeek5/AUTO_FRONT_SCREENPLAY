@@ -8,10 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * Pregunta: ¿está el ticket con el título dado en la lista de tickets?
- * Usa WebDriverWait para esperar a que los tickets carguen desde la API.
- */
 public class IsTicketInList implements Question<Boolean> {
 
     private final String ticketTitle;

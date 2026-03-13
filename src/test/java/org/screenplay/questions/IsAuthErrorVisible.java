@@ -5,9 +5,6 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.openqa.selenium.By;
 
-/**
- * Pregunta: ¿está visible el mensaje de error de autenticación en la UI?
- */
 public class IsAuthErrorVisible implements Question<Boolean> {
 
     private IsAuthErrorVisible() {

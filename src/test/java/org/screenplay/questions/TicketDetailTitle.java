@@ -10,9 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-/**
- * Pregunta: devuelve el texto del título en la página de detalle del ticket.
- */
 public class TicketDetailTitle implements Question<String> {
 
     private TicketDetailTitle() {

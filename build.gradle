@@ -43,18 +43,26 @@ java {
 test {
     useJUnit()
     systemProperties(System.getProperties() as Map)
+    systemProperty 'serenity.outputDirectory', layout.projectDirectory.dir('target/site/serenity').asFile.absolutePath
+    systemProperty 'serenity.project.name', rootProject.name
     outputs.dir('target/site/serenity')
+    finalizedBy 'aggregate'
 }
 
-tasks.register('aggregate', JavaExec) {
+tasks.register('aggregate') {
     group           = 'Serenity BDD'
-    description     = 'Agrega los resultados JSON de Serenity en un reporte HTML'
-    mainClass.set('net.thucydides.core.reports.html.HtmlAggregateStoryReporter')
-    classpath       = configurations.testRuntimeClasspath
-    args            = [
-        '--sourceDirectory', layout.buildDirectory.dir('../target/site/serenity').get().asFile.absolutePath,
-        '--outputDirectory', layout.buildDirectory.dir('../target/site/serenity').get().asFile.absolutePath,
-        '--projectName',     rootProject.name
-    ]
-    ignoreExitValue = true
+    description     = 'Genera el reporte HTML de Serenity'
+    mustRunAfter test
+    doLast {
+        def outputDir = layout.projectDirectory.dir('target/site/serenity').asFile
+        def urls = configurations.testRuntimeClasspath.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(urls, Thread.currentThread().contextClassLoader)
+        def rc = cl.loadClass('net.thucydides.core.reports.html.HtmlAggregateStoryReporter')
+        def reporter = rc.getDeclaredConstructor(String).newInstance(rootProject.name)
+        rc.getMethod('setSourceDirectory', File).invoke(reporter, outputDir)
+        rc.getMethod('setOutputDirectory', File).invoke(reporter, outputDir)
+        rc.getMethod('generateReportsForTestResultsFrom', File).invoke(reporter, outputDir)
+        cl.close()
+    }
 }
+

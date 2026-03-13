@@ -4,9 +4,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 
-/**
- * Pregunta: devuelve la URL actual del navegador.
- */
 public class CurrentUrl implements Question<String> {
 
     private CurrentUrl() {

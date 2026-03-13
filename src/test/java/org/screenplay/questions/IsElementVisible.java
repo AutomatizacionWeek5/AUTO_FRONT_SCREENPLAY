@@ -8,9 +8,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-/**
- * Pregunta: ¿está visible algún elemento con el selector CSS dado?
- */
 public class IsElementVisible implements Question<Boolean> {
 
     private final String cssSelector;
